@@ -44,7 +44,7 @@ class RadialBar : public QQuickPaintedItem
     Q_PROPERTY(QColor foregroundColor READ getForegroundColor WRITE setForegroundColor NOTIFY foregroundColorChanged)
     Q_PROPERTY(QColor progressColor READ getProgressColor WRITE setProgressColor NOTIFY progressColorChanged)
     Q_PROPERTY(QColor textColor READ getTextColor WRITE setTextColor NOTIFY textColorChanged)
-    Q_PROPERTY(QString suffixText READ getSuffixText WRITE setSuffixText NOTIFY suffixTextChanged)
+    Q_PROPERTY(QString text READ getText WRITE setText NOTIFY textChanged)
     Q_PROPERTY(bool showText READ isShowText WRITE setShowText)
     Q_PROPERTY(Qt::PenCapStyle penStyle READ getPenStyle WRITE setPenStyle NOTIFY penStyleChanged)
     Q_PROPERTY(DialType dialType READ getDialType WRITE setDialType NOTIFY dialTypeChanged)
@@ -72,7 +72,7 @@ public:
     QColor getForegroundColor() {return m_DialColor;}
     QColor getProgressColor() {return m_ProgressColor;}
     QColor getTextColor() {return m_TextColor;}
-    QString getSuffixText() {return m_SuffixText;}
+    QString getText() {return m_Text;}
     bool isShowText() {return m_ShowText;}
     Qt::PenCapStyle getPenStyle() {return m_PenStyle;}
     DialType getDialType() {return m_DialType;}
@@ -89,7 +89,8 @@ public:
     void setForegroundColor(QColor color);
     void setProgressColor(QColor color);
     void setTextColor(QColor color);
-    void setSuffixText(QString text);
+    void setText(QString text);
+    void setTextFromValue();
     void setShowText(bool show);
     void setPenStyle(Qt::PenCapStyle style);
     void setDialType(DialType type);
@@ -107,7 +108,7 @@ signals:
     void foregroundColorChanged();
     void progressColorChanged();
     void textColorChanged();
-    void suffixTextChanged();
+    void textChanged();
     void penStyleChanged();
     void dialTypeChanged();
     void textFontChanged();
@@ -124,7 +125,8 @@ private:
     QColor m_DialColor;
     QColor m_ProgressColor;
     QColor m_TextColor;
-    QString m_SuffixText;
+    QString m_Text;
+    bool m_TextManuallySet;
     bool m_ShowText;
     Qt::PenCapStyle m_PenStyle;
     DialType m_DialType;

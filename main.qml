@@ -40,7 +40,7 @@ Window {
                     italic: false
                     pointSize: 16
                 }
-                suffixText: "%"
+                text: value + "%"
                 textColor: "#FFFFFF"
             }
 
@@ -62,7 +62,7 @@ Window {
                     italic: false
                     pointSize: 32
                 }
-                suffixText: "°"
+                text: value + "°"
                 textColor: "#c61e5d"
             }
 
@@ -84,7 +84,7 @@ Window {
                     italic: false
                     pointSize: 24
                 }
-                suffixText: "%"
+                text: value + "%"
                 textColor: "#1e5dc6"
             }
         }
@@ -107,7 +107,7 @@ Window {
                     italic: false
                     pointSize: 22
                 }
-                suffixText: "%"
+                text: value + "%"
                 textColor: "#7c8688"
             }
 
@@ -128,7 +128,7 @@ Window {
                     italic: false
                     pointSize: 22
                 }
-                suffixText: "°"
+                text: value + "°"
                 textColor: "#7c8688"
             }
 
@@ -150,7 +150,7 @@ Window {
                     italic: false
                     pointSize: 32
                 }
-                suffixText: "%"
+                text: value + "%"
                 textColor: "#7c8688"
             }
         }
@@ -176,7 +176,7 @@ Window {
                     italic: false
                     pointSize: 32
                 }
-                suffixText: "%"
+                text: value + "%"
                 textColor: "#FFFFFF"
             }
 
@@ -198,7 +198,7 @@ Window {
                     italic: false
                     pointSize: 32
                 }
-                suffixText: "°"
+                text: value + "°"
                 textColor: "#FFFFFF"
             }
 
@@ -220,7 +220,7 @@ Window {
                     italic: false
                     pointSize: 32
                 }
-                suffixText: "%"
+                text: value + "%"
                 textColor: "#FFFFFF"
             }
         }

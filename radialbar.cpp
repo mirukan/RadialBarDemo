@@ -41,7 +41,8 @@ RadialBar::RadialBar(QQuickItem *parent)
       m_DialColor(QColor(80,80,80)),
       m_ProgressColor(QColor(135,26,5)),
       m_TextColor(QColor(0, 0, 0)),
-      m_SuffixText(""),
+      m_Text(""),
+      m_TextManuallySet(false),
       m_ShowText(true),
       m_PenStyle(Qt::FlatCap),
       m_DialType(DialType::MinToMax)
@@ -50,6 +51,10 @@ RadialBar::RadialBar(QQuickItem *parent)
     setHeight(200);
     setSmooth(true);
     setAntialiasing(true);
+
+    setTextFromValue();
+    QObject::connect(this, &RadialBar::valueChanged,
+                     this, &RadialBar::setTextFromValue);
 }
 
 void RadialBar::paint(QPainter *painter)
@@ -109,11 +114,7 @@ void RadialBar::paint(QPainter *painter)
     painter->setPen(pen);
     if(m_ShowText)
     {
-        painter->drawText(rect.adjusted(offset, offset, -offset, -offset), Qt::AlignCenter,QString::number(m_Value) + m_SuffixText);
-    }
-    else
-    {
-        painter->drawText(rect.adjusted(offset, offset, -offset, -offset), Qt::AlignCenter, m_SuffixText);
+        painter->drawText(rect.adjusted(offset, offset, -offset, -offset), Qt::AlignCenter, m_Text);
     }
     painter->restore();
 
@@ -216,12 +217,30 @@ void RadialBar::setTextColor(QColor color)
     emit textColorChanged();
 }
 
-void RadialBar::setSuffixText(QString text)
+void RadialBar::setText(QString text)
 {
-    if(m_SuffixText == text)
+    if (! m_TextManuallySet) {
+        QObject::disconnect(this, &RadialBar::valueChanged,
+                            this, &RadialBar::setTextFromValue);
+        m_TextManuallySet = true;
+    }
+
+    if(m_Text == text)
         return;
-    m_SuffixText = text;
-    emit suffixTextChanged();
+
+    m_Text = text;
+    emit textChanged();
+}
+
+void RadialBar::setTextFromValue()
+{
+    QString textValue = QString::number(m_Value);
+
+    if(m_Text == textValue)
+        return;
+
+    m_Text = textValue;
+    emit textChanged();
 }
 
 void RadialBar::setShowText(bool show)

@@ -57,7 +57,7 @@ ApplicationWindow {
                 minValue: minVal
                 maxValue: maxVal
                 value: actVal
-                suffixText: suffix
+                text: value + suffix
                 textFont {
                     family: "Halvetica"
                     italic: false

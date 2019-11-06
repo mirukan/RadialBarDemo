@@ -1,4 +1,5 @@
 # RadialBarDemo
+
 Custom radial Progress Bar QML component
 This is a Custom Radial Bar created as a component to be used with QML.
 
@@ -15,7 +16,7 @@ Following are the main properties of this component.
 *	progressColor
 *	textColor
 *	penStyle
-*	suffixText
+*	text
 *	showText
 *	dialType
 *	textFont
